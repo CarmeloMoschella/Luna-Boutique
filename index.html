@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Luna Boutique — moda femenina elegante en Chacao, Caracas. Catálogo de ropa, accesorios y promociones." />
+  <meta name="keywords" content="boutique, ropa femenina, moda, Chacao, Caracas, Venezuela" />
+  <meta name="author" content="Luna Boutique" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Luna Boutique — Moda Femenina" />
+  <meta property="og:description" content="Moda femenina elegante en Chacao, Caracas." />
+  <meta property="og:url"         content="https://lunaboutique.com" />
+  <meta property="og:image"       content="https://lunaboutique.com/img/og-cover.jpg" />
+  <meta property="og:locale"      content="es_VE" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Luna Boutique — Moda Femenina" />
+  <meta name="twitter:description" content="Catálogo de moda femenina elegante en Chacao, Caracas." />
+  <meta name="twitter:image"       content="https://lunaboutique.com/img/og-cover.jpg" />
+
+  <title>Luna Boutique — Moda Femenina en Caracas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="/" class="logo" aria-label="Luna Boutique — Inicio">
+        <svg class="logo-svg" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 8 A16 16 0 1 0 20 40 A10 10 0 1 1 20 8 Z" fill="#C9A4A4"/>
+          <text x="42" y="34" font-family="Georgia, serif" font-size="26" font-weight="300" letter-spacing="6" fill="#1a1a1a">LUNA</text>
+          <line x1="42" y1="38" x2="175" y2="38" stroke="#C9A4A4" stroke-width="0.8"/>
+          <text x="42" y="47" font-family="Georgia, serif" font-size="10" font-weight="300" letter-spacing="8" fill="#6b6b6b">BOUTIQUE</text>
+        </svg>
+      </a>
+
+      <nav class="nav-principal" aria-label="Navegación principal">
+        <ul class="nav-lista">
+          <li><a href="#catalogo"    class="nav-link">Catálogo</a></li>
+          <li><a href="#promociones" class="nav-link">Promociones</a></li>
+          <li><a href="#instagram"   class="nav-link">Instagram</a></li>
+          <li><a href="#ubicacion"   class="nav-link">Visítanos</a></li>
+          <li><a href="#contacto"    class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-acciones">
+        <!-- Botón carrito en el header -->
+        <button class="carrito-toggle" id="carrito-toggle" aria-label="Ver carrito" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 5.9 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 23.45 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+          <span class="carrito-badge" id="carrito-badge" aria-live="polite">0</span>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- =============================================
+       DRAWER DEL CARRITO
+       Panel lateral que se abre desde la derecha
+  ============================================= -->
+  <div class="carrito-overlay" id="carrito-overlay" aria-hidden="true"></div>
+
+  <aside class="carrito-drawer" id="carrito-drawer" aria-label="Tu carrito" aria-hidden="true">
+
+    <div class="carrito-header">
+      <h2 class="carrito-titulo">Tu selección</h2>
+      <button class="carrito-cerrar" id="carrito-cerrar" aria-label="Cerrar carrito">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Lista de items — app.js la llena -->
+    <ul class="carrito-lista" id="carrito-lista" aria-label="Productos en el carrito">
+      <!-- Estado vacío inicial -->
+      <li class="carrito-vacio" id="carrito-vacio">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="#e8e0dc">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 5.9 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 23.45 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+        <p>Tu carrito está vacío.<br/>Agrega productos con "Lo quiero".</p>
+      </li>
+    </ul>
+
+    <!-- Footer del carrito: total y botón enviar -->
+    <div class="carrito-footer" id="carrito-footer">
+      <div class="carrito-total">
+        <span>Total estimado</span>
+        <span class="carrito-total-precio" id="carrito-total">$0.00</span>
+      </div>
+      <p class="carrito-nota">
+        Los precios son referenciales. Te confirmamos disponibilidad y precio final por WhatsApp.
+      </p>
+      <a
+        href="#"
+        class="btn btn-wa-hero carrito-enviar"
+        id="carrito-enviar"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Enviar pedido por WhatsApp"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 0 0 .612.612l6.09-1.464A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.994-1.366l-.358-.213-3.716.894.91-3.641-.234-.374A9.818 9.818 0 1 1 12 21.818z"/>
+        </svg>
+        Enviar pedido por WhatsApp
+      </a>
+      <button class="carrito-vaciar" id="carrito-vaciar">Vaciar carrito</button>
+    </div>
+
+  </aside>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Bienvenida">
+      <div class="hero-textura" aria-hidden="true">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <g opacity="0.18" fill="none" stroke="#C9A4A4">
+            <path d="M-20 600 Q100 400 180 250 Q220 170 280 120" stroke-width="1.2"/>
+            <path d="M180 250 Q140 200 120 160" stroke-width="0.8"/>
+            <path d="M220 190 Q195 155 175 130" stroke-width="0.8"/>
+            <circle cx="120" cy="158" r="14" stroke-width="0.7"/><circle cx="120" cy="158" r="7" stroke-width="0.7"/>
+            <circle cx="175" cy="128" r="11" stroke-width="0.7"/><circle cx="175" cy="128" r="5.5" stroke-width="0.7"/>
+            <circle cx="280" cy="118" r="18" stroke-width="0.8"/><circle cx="280" cy="118" r="9" stroke-width="0.8"/>
+            <ellipse cx="280" cy="100" rx="6" ry="11" stroke-width="0.6"/>
+            <ellipse cx="298" cy="110" rx="6" ry="11" transform="rotate(60 298 110)" stroke-width="0.6"/>
+            <ellipse cx="298" cy="128" rx="6" ry="11" transform="rotate(120 298 128)" stroke-width="0.6"/>
+            <ellipse cx="280" cy="136" rx="6" ry="11" stroke-width="0.6"/>
+            <ellipse cx="262" cy="128" rx="6" ry="11" transform="rotate(60 262 128)" stroke-width="0.6"/>
+            <ellipse cx="262" cy="110" rx="6" ry="11" transform="rotate(120 262 110)" stroke-width="0.6"/>
+            <path d="M820 -20 Q700 80 620 180 Q570 240 530 320" stroke-width="1.2"/>
+            <path d="M620 180 Q660 150 680 110" stroke-width="0.8"/>
+            <path d="M570 260 Q610 240 640 210" stroke-width="0.8"/>
+            <circle cx="680" cy="108" r="15" stroke-width="0.7"/><circle cx="680" cy="108" r="7" stroke-width="0.7"/>
+            <circle cx="640" cy="208" r="12" stroke-width="0.7"/><circle cx="640" cy="208" r="6" stroke-width="0.7"/>
+            <circle cx="530" cy="320" r="20" stroke-width="0.8"/><circle cx="530" cy="320" r="10" stroke-width="0.8"/>
+            <ellipse cx="530" cy="300" rx="7" ry="13" stroke-width="0.6"/>
+            <ellipse cx="550" cy="308" rx="7" ry="13" transform="rotate(60 550 308)" stroke-width="0.6"/>
+            <ellipse cx="550" cy="332" rx="7" ry="13" transform="rotate(120 550 332)" stroke-width="0.6"/>
+            <ellipse cx="530" cy="340" rx="7" ry="13" stroke-width="0.6"/>
+            <ellipse cx="510" cy="332" rx="7" ry="13" transform="rotate(60 510 332)" stroke-width="0.6"/>
+            <ellipse cx="510" cy="308" rx="7" ry="13" transform="rotate(120 510 308)" stroke-width="0.6"/>
+            <ellipse cx="155" cy="220" rx="5" ry="14" transform="rotate(-30 155 220)" stroke-width="0.6"/>
+            <ellipse cx="200" cy="200" rx="5" ry="14" transform="rotate(20 200 200)" stroke-width="0.6"/>
+            <ellipse cx="590" cy="200" rx="5" ry="14" transform="rotate(-40 590 200)" stroke-width="0.6"/>
+            <ellipse cx="650" cy="280" rx="5" ry="14" transform="rotate(30 650 280)" stroke-width="0.6"/>
+            <circle cx="400" cy="50" r="8" stroke-width="0.6"/><circle cx="400" cy="50" r="4" stroke-width="0.6"/>
+            <circle cx="100" cy="400" r="6" stroke-width="0.6"/>
+            <circle cx="700" cy="500" r="9" stroke-width="0.6"/><circle cx="700" cy="500" r="4.5" stroke-width="0.6"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-logo" aria-hidden="true">
+          <svg class="hero-logo-svg" viewBox="0 0 260 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 10 A18 18 0 1 0 24 46 A12 12 0 1 1 24 10 Z" fill="#C9A4A4" opacity="0.85"/>
+            <text x="50" y="42" font-family="Georgia, serif" font-size="32" font-weight="300" letter-spacing="7" fill="#1a1a1a">LUNA</text>
+            <line x1="50" y1="47" x2="215" y2="47" stroke="#C9A4A4" stroke-width="0.8"/>
+            <text x="50" y="57" font-family="Georgia, serif" font-size="11" font-weight="300" letter-spacing="9" fill="#6b6b6b">BOUTIQUE</text>
+          </svg>
+        </div>
+        <h1 class="hero-titulo">Elegancia que<br/><em>te define</em></h1>
+        <p class="hero-subtitulo">Moda femenina cuidadosamente seleccionada para cada ocasión.</p>
+        <a href="https://wa.me/584121234567?text=Hola%2C%20me%20interesa%20ver%20el%20cat%C3%A1logo%20de%20Luna%20Boutique"
+           class="btn btn-wa-hero" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 0 0 .612.612l6.09-1.464A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.994-1.366l-.358-.213-3.716.894.91-3.641-.234-.374A9.818 9.818 0 1 1 12 21.818z"/>
+          </svg>
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </section>
+
+
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="seccion-catalogo" aria-label="Catálogo de productos">
+      <div class="container">
+        <h2 class="seccion-titulo">Catálogo</h2>
+        <div id="filtros" class="filtros" role="search" aria-label="Filtros del catálogo"></div>
+        <div id="productos-grid" class="productos-grid" role="list" aria-live="polite"></div>
+      </div>
+    </section>
+
+
+    <!-- PROMOCIONES -->
+    <section id="promociones" class="seccion-promociones" aria-label="Promociones vigentes">
+      <div class="container">
+        <h2 class="seccion-titulo">Promociones</h2>
+        <div id="promociones-grid" class="promociones-grid" role="list"></div>
+      </div>
+    </section>
+
+
+    <!-- INSTAGRAM -->
+    <section id="instagram" class="seccion-instagram" aria-label="Instagram de Luna Boutique">
+      <div class="container">
+        <div class="instagram-header">
+          <h2 class="seccion-titulo">Síguenos en Instagram</h2>
+          <a href="https://instagram.com/lunaboutique.ve" class="instagram-handle" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            @lunaboutique.ve
+          </a>
+        </div>
+        <div class="ig-carrusel-wrapper">
+          <button class="ig-nav ig-prev" aria-label="Anterior">&#8592;</button>
+          <div class="ig-carrusel" id="ig-carrusel" aria-label="Publicaciones recientes"></div>
+          <button class="ig-nav ig-next" aria-label="Siguiente">&#8594;</button>
+        </div>
+        <div class="ig-dots" id="ig-dots"></div>
+        <div class="instagram-cta">
+          <a href="https://instagram.com/lunaboutique.ve" class="btn btn-ig" target="_blank" rel="noopener noreferrer">Ver perfil completo</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="seccion-ubicacion" aria-label="Dónde encontrarnos">
+      <div class="container ubicacion-inner">
+        <div class="ubicacion-info">
+          <h2 class="seccion-titulo texto-izq">Visítanos</h2>
+
+          <div class="ubicacion-bloque">
+            <div class="ubicacion-icono" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#C9A4A4"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <p class="ubicacion-label">Dirección</p>
+              <p class="ubicacion-valor">CC Sambil, Local P-14<br/>Av. Libertador, Chacao<br/>Caracas 1060, Venezuela</p>
+            </div>
+          </div>
+
+          <div class="ubicacion-bloque">
+            <div class="ubicacion-icono" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#C9A4A4"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            </div>
+            <div>
+              <p class="ubicacion-label">Horario</p>
+              <ul class="horario-lista">
+                <li><span>Lunes – Sábado</span><span>10:00 am – 8:00 pm</span></li>
+                <li><span>Domingo</span><span>11:00 am – 6:00 pm</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ubicacion-bloque">
+            <div class="ubicacion-icono" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#C9A4A4"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div>
+              <p class="ubicacion-label">WhatsApp</p>
+              <a href="https://wa.me/584121234567" class="ubicacion-tel" target="_blank" rel="noopener noreferrer">+58 412 123 4567</a>
+            </div>
+          </div>
+
+          <a href="https://maps.google.com/?q=Centro+Comercial+Sambil+Caracas+Chacao" class="btn btn-mapa" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+
+        <div class="ubicacion-mapa">
+          <a href="https://maps.google.com/?q=Centro+Comercial+Sambil+Caracas+Chacao" target="_blank" rel="noopener noreferrer" class="mapa-link" aria-label="Ver en Google Maps">
+            <iframe class="mapa-iframe" title="Ubicación Luna Boutique"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.4894527617854!2d-66.85805882426396!3d10.489622089643185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a58adcf1f2a17%3A0x999e2b27e16a57e4!2sCentro%20Comercial%20Sambil!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1">
+            </iframe>
+            <div class="mapa-overlay" aria-hidden="true">
+              <span class="mapa-overlay-hint">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Abrir en Google Maps
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACTO — actualizado con teléfono + botón Instagram -->
+    <section id="contacto" class="seccion-contacto" aria-label="Contacto">
+      <div class="container">
+        <h2 class="seccion-titulo">Contacto</h2>
+
+        <p class="contacto-descripcion">
+          ¿Preguntas sobre tallas, disponibilidad o pedidos especiales?<br/>
+          Encuéntranos por cualquiera de estos canales.
+        </p>
+
+        <!-- Teléfono prominente -->
+        <div class="contacto-telefono">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#C9A4A4" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <a href="tel:+584121234567" class="contacto-tel-link">+58 412 123 4567</a>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="contacto-botones">
+          <a href="https://wa.me/584121234567?text=Hola%2C%20tengo%20una%20consulta%20sobre%20Luna%20Boutique"
+             class="btn btn-wa-hero" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 0 0 .612.612l6.09-1.464A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.994-1.366l-.358-.213-3.716.894.91-3.641-.234-.374A9.818 9.818 0 1 1 12 21.818z"/>
+            </svg>
+            Escribir por WhatsApp
+          </a>
+
+          <a href="https://instagram.com/lunaboutique.ve" class="btn btn-instagram-contacto" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            Ver en Instagram
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="container footer-inner">
+      <div class="footer-marca">
+        <svg class="footer-logo-svg" viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg" aria-label="Luna Boutique">
+          <path d="M18 7 A14 14 0 1 0 18 35 A9 9 0 1 1 18 7 Z" fill="#C9A4A4" opacity="0.9"/>
+          <text x="38" y="31" font-family="Georgia, serif" font-size="22" font-weight="300" letter-spacing="5" fill="#ffffff">LUNA</text>
+          <line x1="38" y1="34" x2="155" y2="34" stroke="#C9A4A4" stroke-width="0.6"/>
+          <text x="38" y="43" font-family="Georgia, serif" font-size="9" font-weight="300" letter-spacing="7" fill="#d4ccc8">BOUTIQUE</text>
+        </svg>
+        <p class="footer-slogan">Elegancia que te define.</p>
+      </div>
+      <nav class="footer-redes" aria-label="Redes sociales">
+        <ul class="redes-lista">
+          <li>
+            <a href="https://instagram.com/lunaboutique.ve" class="red-social instagram" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              @lunaboutique.ve
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/584121234567" class="red-social whatsapp" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 0 0 .612.612l6.09-1.464A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.994-1.366l-.358-.213-3.716.894.91-3.641-.234-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>
+              +58 412 123 4567
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <address class="footer-direccion">
+        <p>CC Sambil, Local P-14<br/>Av. Libertador, Chacao<br/>Caracas 1060, Venezuela</p>
+        <p>Lun – Sáb: 10:00 am – 8:00 pm<br/>Dom: 11:00 am – 6:00 pm</p>
+      </address>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="anio-actual"></span> Luna Boutique. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/productos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
