@@ -244,6 +244,23 @@
       "tallas": [
         "Única"
       ]
+    },
+    {
+      "imagenes": [
+        "https://images-na.ssl-images-amazon.com/images/I/61iVxlLY7TL._AC_UL600_SR600,600_.jpg"
+      ],
+      "precio": 22,
+      "nombre": "Franela de flores blanca ",
+      "descripcion": "Franela de algodon venezolano con patrones de amapolas",
+      "whatsapp": "584121234567",
+      "categoria": "blusas",
+      "precioOriginal": "",
+      "enOferta": false,
+      "id": 13,
+      "tallas": [
+        "S",
+        "L"
+      ]
     }
   ]
 }
