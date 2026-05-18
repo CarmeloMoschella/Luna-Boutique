@@ -1,0 +1,79 @@
+# ================================================
+# LUNA BOUTIQUE — Decap CMS config.yml
+# ================================================
+
+backend:
+  # Netlify Identity maneja el login
+  name: git-gateway
+  branch: main
+
+# Carpeta donde se guardan las imágenes que suba el cliente
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+# Idioma del panel
+locale: es
+
+collections:
+  # ── COLECCIÓN: PRODUCTOS ──────────────────────
+  - name: "productos"
+    label: "Productos"
+    label_singular: "Producto"
+    # Un solo archivo JSON con todos los productos
+    format: json
+    files:
+      - name: "lista"
+        label: "Lista de productos"
+        file: "content/productos.json"
+        fields:
+          - name: "productos"
+            label: "Productos"
+            label_singular: "Producto"
+            widget: list
+            summary: "{{fields.nombre}} — ${{fields.precio}}"
+            fields:
+              - { name: id,          label: "ID",          widget: number,   value_type: int }
+              - { name: nombre,      label: "Nombre",       widget: string }
+              - name: categoria
+                label: "Categoría"
+                widget: select
+                options:
+                  - { label: "Vestidos",   value: vestidos }
+                  - { label: "Blusas",     value: blusas }
+                  - { label: "Pantalones", value: pantalones }
+                  - { label: "Accesorios", value: accesorios }
+              - { name: descripcion, label: "Descripción",  widget: string }
+              - { name: precio,      label: "Precio ($)",   widget: number,   value_type: float }
+              - name: enOferta
+                label: "¿En oferta?"
+                widget: boolean
+                default: false
+              - name: precioOriginal
+                label: "Precio original ($)"
+                widget: number
+                value_type: float
+                required: false
+                hint: "Solo si está en oferta. Dejar vacío si no aplica."
+              - name: imagenes
+                label: "Fotos del producto"
+                label_singular: "Foto"
+                widget: list
+                field:
+                  name: url
+                  label: "URL de la imagen"
+                  widget: image
+                hint: "Sube hasta 4 fotos. La primera es la principal."
+              - name: tallas
+                label: "Tallas disponibles"
+                label_singular: "Talla"
+                widget: list
+                field:
+                  name: talla
+                  label: "Talla"
+                  widget: string
+                hint: "Ej: XS, S, M, L, XL — o números como 28, 30, 32"
+              - name: whatsapp
+                label: "Número WhatsApp"
+                widget: string
+                default: "584121234567"
+                hint: "Formato: código de país + número, sin + ni espacios"
